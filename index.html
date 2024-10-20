@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Netflix Mini Clone</title>
+</head>
+<body>
+
+    <nav>
+        <div id="logo">
+             <img src="./images/netflixLogo.png" alt="netflixLogo">
+        </div>
+        <div id="sign">
+            <button>Sign In</button>
+        </div>
+    </nav>
+
+        <div class="subscription-container">
+            <div class="text">
+                <h1>Unlimited movies, TV shows, and more</h1>
+                <h3>Starts at 5$. Cancel anytime.</h3>
+                <p>Ready to watch? Enter your email to create or restart your membership.</p>
+            </div>
+            <div class="email-container">
+                <input type="email" name="" id="" placeholder="Enter address">
+                <button>Get Started</button>
+            </div>
+            
+        </div>
+        <div class="movies-container">
+
+             <div class="dropdown">
+                <button onclick="dropdownShow()" class="dropbtn">Genres</button>
+                <div id="genres" class="dropdown-content">
+                    <span id="drama">Drama</span>
+                    <span id="crime">Crime</span>
+                    <span id="action">Action</span>
+                    <span id="horror">Horror</span>
+                </div>
+             </div>
+
+             <div class="slider-container" id="movies">
+             </div>
+             
+        </div>
+
+        <div id="popup" class="popup">
+            <div class="popup-bg" id="bg">
+                <button id="closebtn" onclick="popupClose()">&times;</button>
+            </div>
+           <div class="movie-info">
+            <h2 id="title"></h2>
+            <div class="tags" id="tags">
+            </div>
+            <p id="plot"></p>
+            <button id="watch">Get Started</button>
+           </div>
+            
+        </div>
+
+        <div id="overlay">
+
+        </div>
+    <script src="script.js"></script>
+</body>
+</html>

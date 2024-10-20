@@ -1,0 +1,459 @@
+@font-face {
+    font-family: NetflixBold;
+    src: url(./fonts/Netflix_Bold.otf);
+}
+@font-face {
+    font-family: NetflixMedium;
+    src: url(./fonts/Netflix_Medium.otf);
+}
+@font-face {
+    font-family: NetflixLight;
+    src: url(./fonts/Netflix_Light.otf);
+}
+
+:root{
+   --button-bg: #d00000;
+   --button-hover: #800E13;
+   --reason-bg: #38040E;
+   --genre-btn: #160921;
+   --genre-btn-hover: #2f1545;
+   --genre-option-hover: #44275c;
+   --popup-bg: rgb(22, 22, 22);
+   --tags-bg: rgba(109, 104, 117, 0.3);
+
+   --border: #6d6875;
+
+   --white: #fff;
+   --black: #000;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background:  linear-gradient(to bottom, transparent calc(66% - 30px), transparent calc(66% + 30px), var(--black) calc(66% + 160px), var(--black) 100%),
+    url(./images/bg.png) no-repeat top center;
+    background-size: cover;
+}
+
+/* nav */
+nav{
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo img{
+    height: 100px;
+    filter: brightness(0.8);
+}
+
+#sign{
+    width: 70px;
+    height: 40px;
+    background: var(--button);
+    text-align: center;
+}
+
+nav button,
+.email-container button,
+#watch{
+    border: none;
+    background: var(--button-bg);
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    color: var(--white);
+    font-family: NetflixLight;
+    font-weight: 600;   
+    padding: 10px;
+    transition: all 0.2s ease;
+ 
+}
+
+nav button:hover,
+.email-container button:hover,
+#watch:hover{
+    background: var(--button-hover);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* email */
+.text{
+    margin: auto;
+    margin-top: 7rem;
+    color: var(--white);
+    text-align: center;
+    width: 500px;
+    height: 185px
+}
+
+.text h1{
+    font-family: NetflixBold;
+    font-size: 3rem;
+}
+
+.text h3{
+    font-family: NetflixLight;
+    font-size: 1rem;
+    margin: 0.8rem 0;
+}
+
+.text p{
+    font-family: NetflixLight;
+    font-size: 0.8rem;
+}
+
+.email-container{
+    width: 430px;
+    margin: auto;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 300px 120px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 35px;
+}
+
+.email-container input{
+    height: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: NetflixMedium;
+    color: var(--white);
+}
+
+.email-container button{
+    height: 100%;
+    width: 100%;
+}
+
+/* movie section */
+.movies-container{
+    margin-top: 22rem ;
+    margin-bottom: 5rem !important;
+    background: var(--black);
+    width: 100%;
+}
+
+
+/* dropdown menu */
+.dropdown {
+    position: relative;
+    display: block;
+    width: 75px;
+    margin-left: 6.5vw;
+
+}
+
+.dropbtn {
+    width: 100%;
+    background-color: var(--genre-btn);
+    border: 1px solid var(--border);
+    border-radius: 5px 5px 0 0;
+    color: var(--white);
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus{
+    background-color: var(--genre-btn-hover);
+}
+  
+.dropdown-content {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    background-color: var(--genre-btn);
+    border: 1px solid var(--border);
+    padding: 5px;
+    z-index: 2;
+}
+  
+.dropdown-content span {
+    font-family: NetflixMedium;
+    font-size: 0.9rem;
+    color: var(--white);
+    padding: 5px 0 7px 0 ;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}
+.dropdown-content span:hover {
+    background-color: var(--genre-option-hover);
+}
+.show {
+    opacity: 1;
+}
+/*movies*/
+.slider-container{
+    display: grid;
+    grid-template-columns: repeat(5, 12rem);
+    gap: 2.5rem;
+    justify-content: center;
+    width: 85vw;
+    margin: auto;
+}
+
+.movie img{
+    margin: 1.5rem 0;
+    width: 100%;
+    height: 15rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/*popup*/
+.popup{
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.2s ease-in;
+    width: 650px;
+    height: 550px;
+    background: var(--popup-bg);
+    border: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.popup.active{
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.2s ease-in;
+
+}
+
+.popup-bg{
+    height: 55%;
+    border-radius: 10px 10px 0 0;
+}
+
+.popup-bg::after{
+    content: "";
+    display: block;
+    height: 100%;
+    background: linear-gradient(1deg, rgb(22, 22, 22) 24.16%, rgba(6, 10, 23, 0) 56.61%), linear-gradient(0deg, rgb(22, 22, 22) 3.91%, rgba(6, 10, 23, 0) 69.26%);
+}
+
+.popup-bg #closebtn{
+    position: absolute;
+    display: block;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.popup-bg button{
+    background: none;
+    outline: none;
+    border: none;
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.movie-info{
+    margin: 0 1rem 1rem;
+}
+
+.movie-info #title{
+    margin: 1.5rem 0 0.8rem;
+    color: white;
+    font-family: NetflixMedium;
+}
+
+.tags{
+    display: flex;
+    gap: 10px;
+}
+
+.tags span{
+    background: var(--tags-bg);
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    font-family: NetflixLight;
+}
+
+#plot{
+    margin: 1.4rem 0;
+    color: white;
+    font-family: NetflixLight;
+}
+
+#watch{
+    height: 50px;
+    width: 150px;
+    font-size: 1.2rem;
+}
+
+#overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 426px) {
+
+    nav{
+        margin: 15px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    
+    #logo img{
+        height: 70px;
+    }
+
+    #sign{
+        margin-right: 1rem;
+    }
+
+    #sign,
+    .email-container button,
+    .email-container input{
+        height: 35px;
+    }
+
+    .text{
+        margin-top: 9.5rem;
+    }
+
+    .text,
+    .email-container{
+        width: 85dvw;
+    }
+    
+    .text h1{
+        font-family: NetflixBold;
+        font-size: 1.5rem;
+    }
+    
+    .text h3{
+        font-family: NetflixLight;
+        font-size: 0.9rem;
+        margin: 0.8rem 0;
+    }
+    
+    .text p{
+        font-family: NetflixLight;
+        font-size: 0.7rem;
+    }
+
+    
+    .email-container{
+        grid-template-columns: 2fr 1fr;
+        gap: 5px;
+        height: 35px;
+    }
+
+    .email-container input{
+        padding-left: 10px;
+    }
+
+    .email-container button{
+        font-size: 0.8rem;
+    }
+
+    .movies-container{
+        margin-top: 11.5rem !important;
+    }
+    
+    .slider-container {
+        margin-top: 1rem;
+        grid-template-columns: repeat(2, 45%);
+        grid-template-rows: repeat(3, 12rem);
+        overflow: hidden;
+        gap: 1.2rem;
+        width: 85vw;
+    }
+
+    .movie img{
+        height: 100%;
+        margin: 0;
+    }
+
+    #movie5{
+        display: none;
+    }
+
+    .popup{
+        width: 85vw;
+        height: 500px;
+    }
+
+    #watch{
+        height: 35px;
+        width: 120px;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 426) and (max-width: 1025px) {
+    .movies-container{
+        margin-top: 9rem !important;
+    }
+    
+    .slider-container {
+        margin-top: 1rem;
+        grid-template-columns: repeat(2, 45%);
+        grid-template-rows: repeat(3, 12rem);
+        overflow: hidden;
+        gap: 1.2rem;
+        width: 85vw;
+    }
+
+    .movie img{
+        height: 100%;
+        margin: 0;
+    }
+
+    #movie5{
+        display: none;
+    }
+
+    .popup{
+        width: 85vw;
+        height: 450px;
+    }
+
+    #watch{
+        height: 35px;
+        width: 120px;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+}
